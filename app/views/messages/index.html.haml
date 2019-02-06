@@ -1,0 +1,41 @@
+.chatspace
+  .chat-side
+    .chat-user
+      %h3.header__name
+        本田
+        = fa_icon 'cog', class: 'icon'
+        = fa_icon 'pencil-square-o', class: 'icon'
+    .chat-group
+      .chat-group__name
+        本田覚醒
+      .chat-group__message
+        メッセージ
+      .chat-group__name
+        本田覚醒
+      .chat-group__message
+        メッセージ
+
+  .chat-main
+    .chat-header
+      .chat-header__left
+        %h2.group 本田覚醒
+        %p.user
+          member：本田、本間
+      .chat-header__right
+        .edit-btn Edit
+    .chat-body
+      %ul.chat-contents
+        .chat-content
+          .chat-content__header
+            .chat-content__name
+              本田
+            .chat-content__time
+              2019/02/06
+          .chat-content__message
+
+    .chat-footer
+      .msg_form
+        .chat-footer__text
+      %label.form__mask
+        %i.fa.fa-picture-o
+      .send Send
