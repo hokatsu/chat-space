@@ -1,0 +1,41 @@
+.chatspace
+  .chat-side
+    .side-user
+      %h5.side-user__name
+        本田
+      = fa_icon 'cog', class: 'icon'
+      = fa_icon 'pencil-square-o', class: 'icon'
+    .side-group
+      .side-group__name
+        渋谷
+      .side-group__message
+        メッセージ
+      .side-group__name
+        心斎橋
+      .side-group__message
+        メッセージ
+
+  .chat-main
+    .main-header
+      .current-group
+        %h2.current-group__name 渋谷
+        %p.current-group__user
+          member：本田、本間
+      .edit-group
+        .edit-group__btn Edit
+    .main-body
+      .messages
+        .message
+          .message__header
+            .message__header__name
+              本田
+            .message__header__time
+              2019/02/06
+          .message__text
+            本田テスト
+    .main-footer
+      .message-form
+        %input.message-form__text{placeholder: "type a message"}
+        %label.message-form__mask
+          = fa_icon 'picture-o'
+      .main-footer__send Send
