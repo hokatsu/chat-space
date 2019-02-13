@@ -1,22 +1,5 @@
-.chatspace
-  .chat-side
-    .side-user
-      %h5.side-user__name
-        = current_user.name
-      = link_to edit_user_path(current_user) do
-        = fa_icon 'cog', class: 'icon'
-      = link_to do
-        = fa_icon 'pencil-square-o', class: 'icon'
-    .side-group
-      .side-group__name
-        渋谷
-      .side-group__message
-        メッセージ
-      .side-group__name
-        心斎橋
-      .side-group__message
-        メッセージ
-
+.wrapper
+  = render 'groups/side_bar'
   .chat-main
     .main-header
       .current-group
@@ -24,7 +7,8 @@
         %p.current-group__user
           member：本田、本間
       .edit-group
-        .edit-group__btn Edit
+        = link_to edit_group_path(current_user) do
+          .edit-group__btn Edit
     .main-body
       .messages
         .message
