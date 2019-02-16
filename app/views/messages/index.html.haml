@@ -3,7 +3,8 @@
   .chat-main
     .main-header
       .current-group
-        %h2.current-group__name 渋谷
+        %h2.current-group__name
+          =@group.name
         %p.current-group__user
           member：本田、本間
       .edit-group
@@ -12,12 +13,11 @@
     .main-body
       .messages
         = render partial: 'message', collection: @messages
-    .main-footer
+    .form
       = form_for [@group, @message] do |f|
-      .message-form
-        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-        = f.label :image, class: 'form__mask__image' do
-          = fa_icon 'picture-o', class: 'icon'
-          = f.file_field :image, class: 'hidden'
-      .main-footer__send
-        = f.submit 'Send', class: 'form__submit'
+        = f.text_field :content, class: 'message-form', placeholder: 'type a message'
+        .mask
+          = f.label :image, class: 'message-form__mask' do
+            = fa_icon 'picture-o', class: 'mask'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__send'
