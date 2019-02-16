@@ -6,7 +6,9 @@
         %h2.current-group__name
           =@group.name
         %p.current-group__user
-          member：本田、本間
+          Member：
+          - @group.users.each do |user|
+            =user.name
       .edit-group
         = link_to edit_group_path(current_user) do
           .edit-group__btn Edit
