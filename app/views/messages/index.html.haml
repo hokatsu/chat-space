@@ -3,25 +3,23 @@
   .chat-main
     .main-header
       .current-group
-        %h2.current-group__name 渋谷
+        %h2.current-group__name
+          =@group.name
         %p.current-group__user
-          member：本田、本間
+          Member：
+          - @group.users.each do |user|
+            =user.name
       .edit-group
         = link_to edit_group_path(current_user) do
           .edit-group__btn Edit
     .main-body
       .messages
-        .message
-          .message__header
-            .message__header__name
-              本田
-            .message__header__time
-              2019/02/06
-          .message__text
-            本田テスト
-    .main-footer
-      .message-form
-        %input.message-form__text{placeholder: "type a message"}
-        %label.message-form__mask
-          = fa_icon 'picture-o'
-      .main-footer__send Send
+        = render partial: 'message', collection: @messages
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'message-form', placeholder: 'type a message'
+        .mask
+          = f.label :image, class: 'message-form__mask' do
+            = fa_icon 'picture-o', class: 'mask'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__send'

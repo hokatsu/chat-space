@@ -1,0 +1,11 @@
+.message
+  .message__header
+    .message__header__name
+      = message.user.name
+    .message__header__time
+      = message.created_at.strftime("%Y/%m/%d %H:%M")
+  .message__footer
+    - if message.content.present?
+      %p.message__footer__content
+        = message.content
+    = image_tag message.image.url, class: 'message__footer__image' if message.image.present?
