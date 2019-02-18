@@ -44,7 +44,16 @@ $(function(){
     .done(function(message){
       var html = buildHTML(message);
       $('.messages').append(html)
-      $('.message-form').val('')
+      $('.new_message')[0].reset();
+      $('.main-body').animate({scrollTop: $('.main-body')[0].scrollHeight}, 500, 'swing');
+    })
+
+    .fail(function(){
+      alert('error');
+    })
+
+    .always(function(){
+      $(".form__send").prop("disabled", false);
     })
   });
 });
