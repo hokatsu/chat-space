@@ -12,7 +12,7 @@ $(function() {
     search_list.append(html);
   }
 
-  function appendNoUser(message) {
+  function notappendUser(message) {
     var html = `<div>
                   <div class='chat-group-user'>${ message }</div>
                 </div>`
@@ -26,14 +26,6 @@ $(function() {
                   <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
                 </div>`
     member_list.append(html);
-  }
-
-  function removeUser(name, id){
-    var html = `
-              <div class="chat-group-user clearfix">
-                <p class="chat-group-user__name">${ name }</p>
-                <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${ id }" data-user-name="${ name }">追加</a>
-              </div>`
   }
 
   $("#user-search-field").on("input", function() {
@@ -53,7 +45,7 @@ $(function() {
        });
      }
      else {
-       appendNoUser("一致する名前はありません");
+       notappendUser("一致する名前はありません");
      }
    })
 
@@ -75,6 +67,5 @@ $(function() {
     var name = $(this).data('user-name');
 
     $(this).parent().remove();
-    removeUser(name, id)
   })
 });
