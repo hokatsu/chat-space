@@ -70,7 +70,6 @@ $(function(){
     })
 
     .done(function(data){
-      console.log(data)
       data.forEach( function(new_message){
       var html = buildHTML(new_message);
       $('.messages').append(html);
