@@ -60,7 +60,6 @@ $(function(){
   function update(){
     var lastMessageId = $('.message').last().data('message_id');
     var pathname= location.pathname;
-    console.log(lastMessageId)
 
     $.ajax({
       url: pathname,
