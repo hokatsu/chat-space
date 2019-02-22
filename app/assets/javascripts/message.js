@@ -10,7 +10,7 @@ $(function(){
       image = `<img class="message__footer__image" src="${message.image}">`
     }
 
-    var html =`<div class="message">
+    var html =`<div class="message" data-message_id="${message.message_id}">
                 <div class="message_header">
                  <div class="message__header__name">
                   ${message.user_name}
@@ -43,7 +43,7 @@ $(function(){
 
     .done(function(message){
       var html = buildHTML(message);
-      $('.messages').append(html)
+      $('.messages').append(html);
       $('.new_message')[0].reset();
       $('.main-body').animate({scrollTop: $('.main-body')[0].scrollHeight}, 500, 'swing');
     })
@@ -56,4 +56,25 @@ $(function(){
       $(".form__send").prop("disabled", false);
     })
   });
+
+  function update(){
+    var lastMessageId = $('.message').last().data('message_id');
+    var pathname= location.pathname;
+
+    $.ajax({
+      url: pathname,
+      type: 'GET',
+      data: { message: lastMessageId},
+      dataType: 'json'
+    })
+
+    .done(function(data){
+      data.forEach( function(new_message){
+      var html = buildHTML(new_message);
+      $('.messages').append(html);
+      })
+    });
+  }
+
+  setInterval(update, 5000);
 });
