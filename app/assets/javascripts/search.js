@@ -28,13 +28,15 @@ $(function() {
     member_list.append(html);
   }
 
+  var user_list = [];
+
   $("#user-search-field").on("input", function() {
     var input = $("#user-search-field").val();
     search_list.empty();
      $.ajax({
       type: 'GET',
       url: '/users',
-      data: { keyword: input },
+      data: { keyword: input, id: user_list},
       dataType: 'json'
     })
 
@@ -58,6 +60,7 @@ $(function() {
     var id = $(this).data('user-id');
     var name = $(this).data('user-name');
 
+    user_list.push(id);
     $(this).parent().remove();
     addUser(name, id)
   })
@@ -66,6 +69,7 @@ $(function() {
     var id = $(this).data('user-id');
     var name = $(this).data('user-name');
 
+    user_list.shift(id);
     $(this).parent().remove();
   })
 });

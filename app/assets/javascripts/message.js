@@ -57,9 +57,10 @@ $(function(){
     })
   });
 
+    var pathname = location.pathname;
+
   function update(){
-    var lastMessageId = $('.message').last().data('message_id');
-    var pathname= location.pathname;
+    var lastMessageId = $('.message').last().data('message_id') || 0;
 
     $.ajax({
       url: pathname,
@@ -76,5 +77,8 @@ $(function(){
     });
   }
 
-  setInterval(update, 5000);
+  var groupId = $('.current-group').data('group_id');
+  if (pathname ==`/groups/${groupId}/messages`){
+    setInterval(update, 5000);
+  }
 });
