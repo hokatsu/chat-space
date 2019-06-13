@@ -32,6 +32,11 @@ $(function(){
     var formData = new FormData(this);
     var url = $(this).attr('action');
 
+    if ( $('.message-form').val() == "" && $('#message_image').val() == "" ) {
+      alert("入力して下さい");
+      return
+    }
+
     $.ajax({
       url: url,
       type: "POST",
